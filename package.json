@@ -1,0 +1,19 @@
+{
+  "name": "mqtt-hue-bridge",
+  "version": "0.0.0",
+  "description": "A Hue/MQTT Bridge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Hue",
+    "MQTT",
+    "Hue/MQTT",
+    "Bridge",
+    "Hue",
+    "Bridge"
+  ],
+  "author": "Danny Grove <danny@drgrovellc.com> (http://dannygrove.com/)",
+  "license": "MIT"
+}
