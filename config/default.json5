@@ -1,0 +1,15 @@
+{
+  mqtt: {
+    host: 'localhost',
+    port: 1883,
+    username: null,
+    password: null,
+    secure: false,
+    topic: 'hue'
+  },
+  hue: {
+    refreshInterval: 2,
+    ip: 'localhost',
+    username: null
+  }
+}

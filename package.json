@@ -15,5 +15,11 @@
     "Bridge"
   ],
   "author": "Danny Grove <danny@drgrovellc.com> (http://dannygrove.com/)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "config": "^1.24.0",
+    "deep-equal": "^1.0.1",
+    "mqtt": "^2.2.1",
+    "node-hue-api": "^2.4.1"
+  }
 }
