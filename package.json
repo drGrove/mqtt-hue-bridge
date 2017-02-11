@@ -1,6 +1,6 @@
 {
   "name": "mqtt-hue-bridge",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "A Hue/MQTT Bridge",
   "main": "server.js",
   "scripts": {
