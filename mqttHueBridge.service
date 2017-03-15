@@ -1,0 +1,14 @@
+[Unit]
+Description=MQTT Hue Bridge
+Requires=docker.service
+Requires=dolores-docker.service
+After=docker.service
+After=dolores-docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run --name mqttHueBridge mqtt-hue-bridge
+ExecStop=/usr/bin/docker stop -t 2 mqttHueBridge
+
+[Install]
+WantedBy=local.target

@@ -43,7 +43,6 @@ mqttClient.on('message', (topic, message) => {
     return;
   }
 
-  console.log(topic)
   if(topic.startsWith(`${mqttConf.topic}/set/light/`)) {
     let lightName = topic.substr(topic.lastIndexOf('/') + 1);
     if (hueLights[lightName]) {
@@ -91,7 +90,23 @@ mqttClient.on('message', (topic, message) => {
   } else if (topic.startsWith(`${mqttConf.topic}/set/group/`)) {
     let groupName = topic.substr(topic.lastIndexOf('/') + 1);
     if (hueGroups[groupName]) {
-
+      let group = hueGroups[groupName];
+      let groupOptions = {};
+      try {
+        let payload = JSON.parse(message);
+        groupOptions.on = payload.on;
+        groupOptions.bri = payload.bri;
+        hueClient.setGroupLightState(group.id, groupOptions, function(err, resp) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          publishHueStatus();
+        });
+      } catch (e) {
+        console.error(e);
+        return;
+      }
     } else {
       console.warn(`Group ${groupName} does not exist.`);
     }
@@ -251,6 +266,7 @@ function publishHueGroupStatus() {
     groups.forEach(function(group) {
       let name = group.name.toLowerCase().replace(/ /g, '_');
       let message = {};
+      hueGroups[name] = group;
 
       message = {
         action: group.action,
